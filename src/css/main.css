@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'britanica';
+  src: url(../fonts/Britanica-Regular-Regular.ttf);
+}
 body {
-    font-family:Arial, Helvetica, sans-serif
+    font-family: britanica;
 }
