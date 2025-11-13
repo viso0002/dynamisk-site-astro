@@ -3,13 +3,28 @@ const { data } = Astro.props;
 ---
 
 <article>
-  <h2>{data.productdisplayname}</h2>
-  <p>DKK.{data.price},-</p>
   <img src={`https://kea-alt-del.dk/t7/images/webp/640/${data.id}.webp`} />
+  <h2>{data.productdisplayname}</h2>
+  {
+    data.discount > 0 ? (
+      <>
+        <p class="old-price">Før: DKK {data.price},-</p>
+        <p class="new-price">Nu: DKK {Math.round(data.price - (data.price * data.discount) / 100)},-</p>
+        <p class="discount">-{data.discount}%</p>
+      </>
+    ) : (
+      <p>DKK {data.price},-</p>
+    )
+  }
 </article>
 
 <style>
   img {
     max-width: 100%;
+  }
+  .discount {
+    color: red;
+    background-color: black;
+    width: 65px;
   }
 </style>
